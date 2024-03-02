@@ -1,0 +1,29 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMB File Manager</title>
+</head>
+<body>
+    <h1>Available Shares</h1>
+    <ul id="shares-list"></ul>
+
+    <script>
+        // Fetch available shares from backend
+        fetch('/shares')
+            .then(response => response.json())
+            .then(shares => {
+                const sharesList = document.getElementById('shares-list');
+                shares.forEach(share => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = share.name;
+                    sharesList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching shares:', error));
+    </script>
+</body>
+</html>

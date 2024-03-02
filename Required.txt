@@ -1,0 +1,3 @@
+mkdir smb-file-manager
+cd smb-file-manager
+npm init -y
